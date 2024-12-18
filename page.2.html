@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secrets Manager</title>
+    <link rel="stylesheet" href="CSS-password-rotation.css">
+</head>
+
+<body>
+    <div class="container2">
+        <header>
+            <h2>Store a new secret</h2>
+        </header>
+        
+        <!-- Steps -->
+        <nav class="steps">
+            <ol>
+                <li><strong>Step 1</strong><br>Secret type</li>
+                <li><strong>Step 2</strong><br>Name and description</li>
+                <li><strong>Step 3</strong><br>Configure rotation</li>
+                <li><strong>Step 4</strong><br>Review</li>
+            </ol>
+        </nav>
+
+        <!-- Form Section -->
+        <form id="secretForm">
+            <!-- Secret Type -->
+            <div class="secret-type">
+                <label>Select secret type:</label>
+                <div class="radio-options">
+                    <label>
+                        <input type="radio" name="secretType" id="rdsDatabase" required> Credentials for RDS database
+                    </label>
+                    <label>
+                        <input type="radio" name="secretType" id="otherDatabase" required> Credentials for other database
+                    </label>
+                    <label>
+                        <input type="radio" name="secretType" id="otherSecrets" required> Other type of secrets
+                    </label>
+                </div>
+            </div>
+
+            <!-- Username and Password -->
+            <div class="credentials">
+                <label for="username">User name:</label>
+                <input type="text" id="username" name="username" placeholder="user@example.com" required>
+                
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" placeholder="Password" required>
+                <div>
+                    <input type="checkbox" id="show-password">
+                    <label for="show-password">Show password</label>
+                </div>
+            </div>
+
+            <!-- Encryption Key -->
+            <div class="encryption">
+                <label for="encryptionKey">Select the encryption key:</label>
+                <select id="encryptionKey" name="encryptionKey">
+                    <option>DefaultEncryptionKey</option>
+                </select>
+                <a href="#" class="add-key">Add new key</a>
+            </div>
+
+            <!-- Navigation Buttons -->
+            <div class="buttons2">
+                <button type="button" class="btn cancel" id="cancelButton">Cancel</button>
+                <button type="button" class="btn previous" id="previousButton">Previous</button>
+                <button type="submit" class="btn next" id="nextButton">Next</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        // Function to validate form before proceeding to the next page
+        function validateForm() {
+            const secretType = document.querySelector('input[name="secretType"]:checked');
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            if (!secretType) {
+                alert("Please select a secret type.");
+                return false;
+            }
+
+            if (!username || !password) {
+                alert("Username and password are mandatory.");
+                return false;
+            }
+
+            return true;
+        }
+
+        // Handle the "Next" button click event
+        document.getElementById('nextButton').addEventListener('click', function(event) {
+            event.preventDefault(); // Prevent form submission
+
+            if (validateForm()) {
+                // If valid, go to page3.html
+                window.location.href = 'page3.html';
+            }
+        });
+
+        // Handle the "Previous" button click event
+        document.getElementById('previousButton').addEventListener('click', function() {
+            // Go to index.html
+            window.location.href = 'index.html';
+        });
+
+        // Handle the "Cancel" button click event
+        document.getElementById('cancelButton').addEventListener('click', function() {
+            // Go to index.html
+            window.location.href = 'index.html';
+        });
+    </script>
+
+</body>
+
+</html>

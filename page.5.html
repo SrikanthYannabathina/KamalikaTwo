@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secrets Manager</title>
+    <link rel="stylesheet" href="CSS-password-rotation.css">
+
+</head>
+<body>
+    <!-- Success Notification -->
+    <div class="notification">
+        <p>Your secret <strong>Applications/MyApp/MySQL-RDS-Database</strong> has been successfully stored. <br>
+        Use the sample code to update your applications to retrieve this secret.</p>
+        <div class="buttons2">
+            <button class="btn">See sample code</button>
+            <button class="btn">View details</button>
+        </div>
+    </div>
+
+    
+    <!-- Secrets Table -->
+    <div class="container5">
+        <h2> Secrets Manager > Secrets</h2>
+        <div class="secrets-header">
+            <h3>Secrets</h3>
+            <button class="store-btn">Store a new secret</button>
+        </div>
+        <!-- Search Bar -->
+        <div class="search-bar">
+            <input type="text" placeholder="Search secret name">
+        </div>
+
+        <!-- Table -->
+        <table>
+            <thead>
+                <tr>
+                    <th>Secret name</th>
+                    <th>Description</th>
+                    <th>Last Retrieved</th>
+                    <th>Deleted on</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><a href="#">test_store/</a></td>
+                    <td></td>
+                    <td>04/02/2018</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td><a href="#">Applications/MyApp/MySQL-RDS-Database</a></td>
+                    <td>Superuser for the MySQL database. Virginia Region for MyApp</td>
+                    <td>-</td>
+                    <td>-</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>

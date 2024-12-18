@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secrets Manager</title>
+    <link rel="stylesheet" href="CSS-password-rotation.css">
+</head>
+
+<body>
+    <div class="container4">
+        <!-- Breadcrumb Navigation -->
+        <div class="breadcrumb">
+            <a href="#">Secrets Manager</a> >
+            <a href="#">Secrets</a> >
+            <span>Store a new secret</span>
+        </div>
+
+        <!-- Main Section -->
+        <h1>Password rotation</h1>
+
+        <!-- Informational Box -->
+        <div class="info-box">
+            <p>
+                If you enable automatic rotation, the first rotation will happen immediately when you store this secret. 
+                If this secret is already in use, you must update your applications to retrieve it from Secrets Manager. 
+                Read the <a href="#" class="link">getting started guide</a> on rotation.
+            </p>
+        </div>
+
+        <!-- Configure Automatic Rotation Form -->
+        <form id="rotationForm">
+            <fieldset>
+                <legend>Configure automatic rotation <span class="optional">(optional)</span> <a href="#" class="info-link">Info</a></legend>
+
+                <!-- Rotation Options -->
+                <div class="radio-option">
+                    <input type="radio" id="disable-rotation" name="rotation" checked>
+                    <label for="disable-rotation">
+                        <strong>Disable automatic rotation</strong><br>
+                        <span class="note">
+                            Recommended when your applications are using this secret and have not been updated to use Secrets Manager.
+                        </span>
+                    </label>
+                </div>
+
+                <div class="radio-option">
+                    <input type="radio" id="enable-rotation" name="rotation">
+                    <label for="enable-rotation">
+                        <strong>Enable automatic rotation</strong><br>
+                        <span class="note">
+                            Recommended when your applications are not using this secret yet.
+                        </span>
+                    </label>
+                </div>
+
+                <!-- Rotation Interval -->
+                <div class="rotation-interval">
+                    <label for="rotation-interval-select">Select rotation interval <a href="#" class="info-link">Info</a></label>
+                    <select id="rotation-interval-select">
+                        <option>30 days</option>
+                        <option>60 days</option>
+                        <option>90 days</option>
+                        <option>365 days</option>
+                    </select>
+                    <p class="note">Maximum 365 days</p>
+                </div>
+
+                <!-- Secret for Rotation -->
+                <div class="radio-option1">
+                    <p><strong>Select which secret will be used to perform the rotation</strong> <a href="#" class="info-link">Info</a></p>
+                    <input type="radio" id="secret-provided" name="secret-choice">
+                    <label for="secret-provided">
+                        Use the secret that I provided in step 1<br>
+                        <span class="note">
+                            Use this option if you are storing a super user.
+                        </span>
+                    </label>
+                </div>
+
+                <div class="radio-option2">
+                    <input type="radio" id="previously-stored" name="secret-choice">
+                    <label for="previously-stored">
+                        Use a secret that I have previously stored in Secrets Manager<br>
+                        <span class="note">
+                            Use this option if you are storing a user who will access the database programmatically. ASM will use a previously stored super user to execute rotation.
+                        </span>
+                    </label>
+                </div>
+            </fieldset>
+
+            <!-- Navigation Buttons -->
+            <div class="buttons2">
+                <button type="button" class="btn cancel" id="cancelButton">Cancel</button>
+                <button type="button" class="btn previous" id="previousButton">Previous</button>
+                <button type="submit" class="btn next" id="nextButton">Next</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        // Function to validate if any radio button is selected for secret rotation choice
+        function validateSecretChoice() {
+            const secretProvided = document.getElementById('secret-provided').checked;
+            const previouslyStored = document.getElementById('previously-stored').checked;
+            return secretProvided || previouslyStored;
+        }
+
+        // Handle the "Next" button click event
+        document.getElementById('nextButton').addEventListener('click', function(event) {
+            event.preventDefault(); // Prevent form submission
+
+            // Check if one of the secret choice options is selected
+            if (validateSecretChoice()) {
+                // If valid, go to page5.html
+                window.location.href = 'page5.html';
+            } else {
+                // If not valid, alert the user
+                alert("Please select one of the secret options.");
+            }
+        });
+
+        // Handle the "Previous" button click event
+        document.getElementById('previousButton').addEventListener('click', function() {
+            // Go to page3.html
+            window.location.href = 'page3.html';
+        });
+
+        // Handle the "Cancel" button click event
+        document.getElementById('cancelButton').addEventListener('click', function() {
+            // Go to index.html
+            window.location.href = 'index.html';
+        });
+    </script>
+
+</body>
+
+</html>

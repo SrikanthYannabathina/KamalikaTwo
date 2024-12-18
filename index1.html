@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secrets Manager</title>
+    <link rel="stylesheet" href="CSS-password-rotation.css">
+</head>
+
+<body>
+    <header class="hero">
+        <div class="container1">
+            <h1>Secrets Manager</h1>
+            <p>Easily rotate, manage, and retrieve secrets throughout their lifecycle</p>
+            <p>Secrets Manager helps you protect access to your applications, services, and IT resources. You can easily rotate, manage, and retrieve database credentials, API keys, and other secrets throughout their lifecycle.</p>
+        </div>
+    </header>
+
+    <main>
+        <section class="how-it-works container">
+            <h2>How it works</h2>
+            <p>Use Secrets Manager to store, rotate, monitor, and control access to secrets such as database credentials, API keys, and OAuth tokens. Enable secret rotation using built-in integration for MySQL. You can also enable rotation for arbitrary secrets using Lambda functions. To retrieve secrets, you simply replace hardcoded secrets in applications with a call to Secrets Manager APIs, eliminating the need to expose plaintext secrets. <a href="#">Learn more</a></p>
+        </section>
+
+        <section class="features container">
+            <div class="Benfits-container">
+                <h2>Benefits and Features</h2>
+            </div>
+            <div class="feature-card">
+                <h3>Rotate secrets safely</h3>
+                <p>Easily rotate secrets and enable users and applications to retrieve the most recent.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Manage access with fine-grained permissions</h3>
+                <p>Control access to secrets using fine-grained permissions.</p>
+            </div>
+        </section>
+
+        <div>
+            <button class="button1" id="getStartedButton">Get Started</button>
+        </div>
+    </main>
+
+    <script>
+        // Add a click event listener to navigate to page2.html
+        document.getElementById('getStartedButton').addEventListener('click', function() {
+            window.location.href = 'page2.html';
+        });
+    </script>
+</body>
+
+</html>

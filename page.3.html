@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secrets Manager</title>
+    <link rel="stylesheet" href="CSS-password-rotation.css">
+</head>
+
+<body>
+    <div class="container3">
+        <!-- Breadcrumb Navigation -->
+        <div class="breadcrumb">
+            <a href="#"> Secrets Manager</a> >
+            <a href="#">Secrets</a> >
+            <span>Store a new secret</span>
+        </div>
+
+        <!-- Main Section -->
+        <div class="main-content">
+            <h1>Store a new secret</h1>
+            
+            <!-- Secret Name and Description Form -->
+            <form id="secretForm">
+                <fieldset>
+                    <legend>Secret name and description</legend>
+                    <label for="secret-name">Secret name</label>
+                    <input 
+                        type="text" 
+                        id="secret-name" 
+                        placeholder="Applications/MyApp/MySQL-RDS-Database" 
+                    />
+                    <p class="note">
+                        Secret name can contain alphanumeric characters and the characters /_+=.@-
+                    </p>
+                    
+                    <label for="description">Description <span class="optional">(optional)</span></label>
+                    <textarea 
+                        id="description" 
+                        placeholder="Superuser for the MySQL database (hosted on RDS) in the Secret Manager. Virginia Region for MyApp"
+                        maxlength="250"
+                    ></textarea>
+                    <p class="char-limit">Maximum 250 characters</p>
+                </fieldset>
+
+                <!-- Navigation Buttons -->
+                <div class="buttons5">
+                    <button type="button" class="btn cancel" id="cancelButton">Cancel</button>
+                    <button type="button" class="btn previous" id="previousButton">Previous</button>
+                    <button type="submit" class="btn next" id="nextButton">Next</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Function to validate the Secret Name
+        function validateSecretName(secretName) {
+            const regex = /^[A-Za-z0-9/_+=.@-]+$/;
+            return regex.test(secretName);
+        }
+
+        // Handle the "Next" button click event
+        document.getElementById('nextButton').addEventListener('click', function(event) {
+            event.preventDefault(); // Prevent form submission
+
+            const secretName = document.getElementById('secret-name').value;
+
+            if (secretName && validateSecretName(secretName)) {
+                // If the secret name is valid, go to page4.html
+                window.location.href = 'page4.html';
+            } else {
+                alert("Please enter a valid Secret Name.");
+            }
+        });
+
+        // Handle the "Previous" button click event
+        document.getElementById('previousButton').addEventListener('click', function() {
+            // Go to page2.html
+            window.location.href = 'page2.html';
+        });
+
+        // Handle the "Cancel" button click event
+        document.getElementById('cancelButton').addEventListener('click', function() {
+            // Go to index.html
+            window.location.href = 'index.html';
+        });
+    </script>
+
+</body>
+
+</html>
